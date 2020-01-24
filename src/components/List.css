@@ -1,0 +1,39 @@
+.kaart {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.album{
+    margin: 6px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    
+    
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 25%;
+}
+
+img {
+    width: 50%
+}
+
+body{
+    background-color: #FEDF0D
+}
+
+.lala {
+    width: 25%
+}
