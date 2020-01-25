@@ -4,55 +4,17 @@ import Form from "../layout/Form";
 import {signup} from "../utils/auth";
 
 export default class Signup extends Component {
-    constructor(props){
-        super(props);
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSignupClick = this.handleSignupClick.bind(this);
-    }
-
-    state = {
-        user: {
-            username: "",
-            email: "",
-            password: ""
-        },
-        error: null
-    }
-
-    handleInputChange(e){
-        let userCopy = {...this.state.user};
-        userCopy[e.target.name] =  e.target.value;
-        this.setState({
-            user: userCopy
-        })
-    }
-
-    handleSignupClick(){
-        signup(this.state.user)
-        .then((reponse)=> {
-            this.setState({
-                error: null
-            }, ()=> {
-                this.props.history.push("/user/profile")
-            })
-        })
-        .catch((error)=> {
-            this.setState({error: error.response && error.response.data})
-        })
-    }
-
     render() {
         debugger
         return (
-        <DefaultLayout>
-            <Form>
-                <div className="field">
-                    <label className="label">Username</label>
-                    <div className="control">
+    <div>
+            
+                <div className="">
+                    <label className="">Username</label>
+                    <div className="">
                         <input 
-                            onChange={this.handleInputChange}
-                            value={this.state.username} 
-                            className="input" 
+                            
+                            className="" 
                             name="username" 
                             type="text" 
                             placeholder="email"
@@ -60,26 +22,26 @@ export default class Signup extends Component {
                     </div>
                 </div>
                 
-                <div className="field">
-                    <label className="label">Email</label>
-                    <div className="control">
+                <div className="">
+                    <label className="">Email</label>
+                    <div className="">
                         <input 
-                            onChange={this.handleInputChange}
-                            value={this.state.email} 
-                            className="input" 
+                           
+                        
+                            className="" 
                             name="email" 
                             type="text" 
                             placeholder="email"
                         />
                     </div>
                 </div>                                                
-                <div className="field">
-                    <label className="label">Password</label>
-                    <div className="control">
+                <div className="">
+                    <label className="">Password</label>
+                    <div className="">
                         <input 
-                            onChange={this.handleInputChange} 
-                            value={this.state.password} 
-                            className="input" 
+                           
+                         
+                            className="" 
                             name="password" 
                             type="password" 
                             placeholder="password"
@@ -87,15 +49,14 @@ export default class Signup extends Component {
                     </div>
                 </div>
                 <button 
-                    className="is-primary button"
-                    onClick={this.handleSignupClick}>
+                    className=""
+                    >
                     Signup
                 </button>
-                {this.state.error && 
-                    <p className="has-text-danger">{this.state.error.message || "error"}</p>
-                }
-            </Form>
-        </DefaultLayout>
+                </div>
+
+            
+
         )
     }
 }

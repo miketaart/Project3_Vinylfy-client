@@ -1,3 +1,85 @@
-body {
-    background-color: #FEDF0D,
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:400,700|Montserrat:400,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #222222;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.hero-h1 {
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+  background: #fff;
+  font-size: 52px;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 5%;
+  right: -35%;
+  z-index: 10;
+}
+
+p, a {
+  font-family: 'Comfortaa', cursive;
+}
+
+.App {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background: #fff;
+}
+
+.hero-wrapper {
+  width: 40%;
+  position: relative;
+}
+
+.hero-wrapper img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.logo {
+  width: 120px;
+}
+
+.logo img {
+  width: 100%;
+}
+
+.signUp-wrapper {
+  width: 60%;
+}
+
+.header {
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  padding: 30px 30px;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  justify-content: space-between;
+  justify-self: flex-end;
+}
+
+li {
+  list-style: none;
 }
