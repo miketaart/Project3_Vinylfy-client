@@ -1,13 +1,13 @@
 import React from 'react'
 import './Home.css'
 //import {Link} from "react-router-dom"
-import List from "./List.jsx"
+import Collection from "./Collection.jsx"
 
 const Home = () => {
     return (
         <div className="home">
 
-            <List/>
+            <Collection />
         </div>
     )
 }

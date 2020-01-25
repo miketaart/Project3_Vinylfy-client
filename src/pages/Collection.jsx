@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./List.css";
+import "./Collection.css";
 
 //GET MY COLLECTION FROM DISCOGS
-export default class List extends Component {
+export default class Collection extends Component {
   constructor(props) {
     super(props);
 
@@ -18,22 +18,26 @@ export default class List extends Component {
       album: "",
       artist: "",
       username: "",
-      albumCover: ""
+      albumCover: "",
+      year: ""
     };
   }
 
   getCollection = () => {
     axios
       .get(
+        //`https://localhost:3000/discogs/user/${this.state.username}`
         `https://api.discogs.com/users/${this.state.username}/collection/folders/0/releases`
       ) //username moet dynamisch
       .then(response => {
-        debugger;
+        //debugger;
+        console.log("response of: ", response.data.releases)
         this.setState({
           collection: response.data.releases,
-          album: response.data.releases[0].basic_information.title,
-          artist: response.data.releases[0].basic_information.artists[0].name,
-          year: response.data.releases[0].basic_information.year,
+          //album: response.data.releases[0].basic_information.title,
+          //albumCover: response.data,
+          //artist: response.data.releases[0].basic_information.artists[0].name,
+          //year: response.data.releases[0].basic_information.year,
           error: null
         });
       })
@@ -44,7 +48,7 @@ export default class List extends Component {
       });
   };
 
-  getVinylCover = title => {
+  /*getVinylCover = title => {
     axios.get(`localhost:3000/spotify/album/covers/${title}`).then(response => {
       debugger;
       this.setState({
@@ -54,7 +58,7 @@ export default class List extends Component {
         error: null
       });
     });
-  };
+  };*/
 
   componentDidMount() {
     this.getCollection();
@@ -72,7 +76,7 @@ export default class List extends Component {
 
   clickHandler() {
     this.getCollection();
-    this.getVinylCover();
+    //this.getVinylCover();
   }
 
   render() {
@@ -95,18 +99,18 @@ export default class List extends Component {
 
         <h1 className="title">My vinyl collection</h1>
 
-        <div className="album">
-          {this.state.collection.map((album, index) => {
+        <div className="release">
+          {this.state.collection.map((release, index) => {
             return (
               <div className="info" key={index}>
                 <img src="../images/LP_vinyl3.png" alt="lp" />
 
                 <div className="">
                   <h3>
-                    Album: {album.basic_information.title} (
-                    {album.basic_information.year})
+                    Album: {release.basic_information.title} (
+                    {release.basic_information.year})
                   </h3>
-                  <p>Artist: {album.basic_information.artists[0].name}</p>
+                  <p>Artist: {release.basic_information.artists[0].name}</p>
                 </div>
               </div>
             );
