@@ -2,7 +2,7 @@ import Axios from "axios";
 import qs from "qs";
 
 const axios = Axios.create({
-    baseURL: ``,//'https://ih-beers-api.herokuapp.com/auth/',
+    baseURL: ``,//'https:localhost:3000',
     withCredentials: true,
     headers: { 'content-type': 'application/x-www-form-urlencoded' }
   });

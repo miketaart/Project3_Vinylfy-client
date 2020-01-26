@@ -1,9 +1,9 @@
 import React from 'react';
-import Navbar from "../components/Navbar"
+import header from "../components/header"
 const Default = (props) => {
     return (
         <div className="container">
-            <Navbar />
+            <header />
             {props.children}
         </div>
         

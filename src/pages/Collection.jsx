@@ -26,18 +26,15 @@ export default class Collection extends Component {
   getCollection = () => {
     axios
       .get(
-        //`https://localhost:3000/discogs/user/${this.state.username}`
-        `https://api.discogs.com/users/${this.state.username}/collection/folders/0/releases`
-      ) //username moet dynamisch
+        `https://localhost:3000/discogs/user/${this.state.username}`
+        //`https://api.discogs.com/users/${this.state.username}/collection/folders/0/releases`
+      ) 
       .then(response => {
-        //debugger;
-        console.log("response of: ", response.data.releases)
+        
+        console.log("response of: ", response.data.releases);
         this.setState({
           collection: response.data.releases,
-          //album: response.data.releases[0].basic_information.title,
-          //albumCover: response.data,
-          //artist: response.data.releases[0].basic_information.artists[0].name,
-          //year: response.data.releases[0].basic_information.year,
+          //album: response.data.releases.basic_information.title,
           error: null
         });
       })
@@ -80,6 +77,7 @@ export default class Collection extends Component {
   }
 
   render() {
+    let albumUri = encodeURI(this.state.album)
     return (
       <div className="">
         <div>
@@ -101,14 +99,14 @@ export default class Collection extends Component {
 
         <div className="release">
           {this.state.collection.map((release, index) => {
+            //let albumUri = encodeURI(release.basic_information.title)
             return (
               <div className="info" key={index}>
-                <img src="../images/LP_vinyl3.png" alt="lp" />
+                <Link to={encodeURIComponent(release.basic_information.title)}><img src="../images/LP_vinyl3.png" alt="lp" /></Link>
 
                 <div className="">
                   <h3>
-                    Album: {release.basic_information.title} (
-                    {release.basic_information.year})
+                    Album: {release.basic_information.title} ({release.basic_information.year})
                   </h3>
                   <p>Artist: {release.basic_information.artists[0].name}</p>
                 </div>
@@ -117,7 +115,6 @@ export default class Collection extends Component {
           })}
         </div>
 
-        <Link to={"/"}>Back to home</Link>
       </div>
     );
   }
