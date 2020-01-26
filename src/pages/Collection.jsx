@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./Collection.css";
+import './Collection.css';
+import Navbar from "../components/Navbar.jsx"
 
-//GET MY COLLECTION FROM DISCOGS
+//GET MY COLLECTION FROM DISCOGS --> TESTTESTTEST
 export default class Collection extends Component {
   constructor(props) {
     super(props);
@@ -77,9 +78,10 @@ export default class Collection extends Component {
   }
 
   render() {
-    //let albumUri = encodeURI(this.state.album)
+    let albumUri = encodeURI(this.state.album)
     return (
-      <div className="">
+      <div className="background">
+        <Navbar/>
         <div>
           <div className="">
             <input
@@ -94,26 +96,27 @@ export default class Collection extends Component {
         </div>
 
         {this.state.collection.length === 0 && <h1>Loading...</h1>}
-
+        
         <h1 className="title">My vinyl collection</h1>
 
-        <div className="release">
-          {this.state.collection.map((release, index) => {
-            //let albumUri = encodeURI(release.basic_information.title)
-            return (
-              <div className="info" key={index}>
-                <Link to={encodeURIComponent(release.basic_information.title)}><img src="../images/LP_vinyl3.png" alt="lp" /></Link>
+<div className="release">
+  {this.state.collection.map((release, index) => {
+    //let albumUri = encodeURI(release.basic_information.title)
+    return (
+      <div className="info" key={index}>
+        <Link to={encodeURIComponent(release.basic_information.title)}><img src="../images/LP_vinyl3.png" alt="lp" /></Link>
 
-                <div className="">
-                  <h3>
-                    Album: {release.basic_information.title} ({release.basic_information.year})
-                  </h3>
-                  <p>Artist: {release.basic_information.artists[0].name}</p>
-                </div>
-              </div>
-            );
-          })}
+        <div className="">
+          <h3>
+            Album: {release.basic_information.title} ({release.basic_information.year})
+          </h3>
+          <p>Artist: {release.basic_information.artists[0].name}</p>
         </div>
+      </div>
+    );
+  })}
+</div>
+        
 
       </div>
     );

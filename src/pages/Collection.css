@@ -1,3 +1,7 @@
+.background {
+    background-color: #FEDF0D
+}
+
 .kaart {
     display: flex;
     flex-wrap: wrap;
@@ -27,9 +31,7 @@ img {
     width: 50%
 }
 
-body {
-    background-color: #FEDF0D
-}
+
 
 .lala {
     width: 25%
