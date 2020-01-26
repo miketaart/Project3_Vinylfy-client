@@ -19,7 +19,7 @@ export default class Tracklist extends Component {
         `https://api.spotify.com/v1/search?q=${encodeURI(this.state.album)}&type=track&limit=1&offset=20`
         )
         .then(searchResponse => {
-        debugger;
+        
         this.setState({
             albumId: searchResponse.data,
             error: null

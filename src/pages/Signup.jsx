@@ -1,35 +1,35 @@
 import React, { Component } from 'react'
-import DefaultLayout from "../layout/Default";
-import Form from "../layout/Form";
+//import DefaultLayout from "../layout/Default";
+//import Form from "../layout/Form";
 import {signup} from "../utils/auth";
 
 export default class Signup extends Component {
-    constructor(props){
-        super(props);
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSignupClick = this.handleSignupClick.bind(this);
+
+    constructor (props) {
+        super(props)
+        this.state = {
+            user: {
+                    username: "",
+                    email: "",
+                    password: ""
+                },
+
+            error: null
+
+        }
     }
 
-    state = {
-        user: {
-            username: "",
-            email: "",
-            password: ""
-        },
-        error: null
-    }
-
-    handleInputChange(e){
+    handleInputChange (e) {
         let userCopy = {...this.state.user};
-        userCopy[e.target.name] =  e.target.value;
+        userCopy[e.target.name] = e.target.value;
         this.setState({
-            user: userCopy
-        })
+            user: userCopy 
+        });
     }
 
     handleSignupClick(){
         signup(this.state.user)
-        .then((reponse)=> {
+        .then((response)=> {
             this.setState({
                 error: null
             }, ()=> {
@@ -44,58 +44,61 @@ export default class Signup extends Component {
     render() {
         debugger
         return (
-        <DefaultLayout>
-            <Form>
-                <div className="field">
-                    <label className="label">Username</label>
-                    <div className="control">
+        <div className="form-wrapper">
+            <div className="form-content">
+                <h1>Create a Vinylfy account</h1>
+
+                <p>Sign up, import your vinyl collection and start listening to your favourite records.</p>
+
+                <div className="input-wrapper">
+                    <label className="">Username</label>
+                    <div className="">
                         <input 
+                            className="" 
                             onChange={this.handleInputChange}
                             value={this.state.username} 
-                            className="input" 
                             name="username" 
                             type="text" 
-                            placeholder="email"
+                            placeholder="username"
                         />
                     </div>
                 </div>
                 
-                <div className="field">
-                    <label className="label">Email</label>
-                    <div className="control">
+                <div className="input-wrapper">
+                    <label className="">Email</label>
+                    <div className="">
                         <input 
+                            className=""
                             onChange={this.handleInputChange}
-                            value={this.state.email} 
-                            className="input" 
+                            value={this.state.email}  
                             name="email" 
                             type="text" 
                             placeholder="email"
                         />
                     </div>
-                </div>                                                
-                <div className="field">
-                    <label className="label">Password</label>
-                    <div className="control">
+                </div>  
+
+                <div className="input-wrapper">
+                    <label className="">Password</label>
+                    <div className="">
                         <input 
-                            onChange={this.handleInputChange} 
+                            className="" 
+                            onChange={this.handleInputChange}
                             value={this.state.password} 
-                            className="input" 
                             name="password" 
                             type="password" 
                             placeholder="password"
                         />
                     </div>
                 </div>
+                
                 <button 
-                    className="is-primary button"
-                    onClick={this.handleSignupClick}>
-                    Signup
+                    className="form-button"
+                    >
+                    Sign Up
                 </button>
-                {this.state.error && 
-                    <p className="has-text-danger">{this.state.error.message || "error"}</p>
-                }
-            </Form>
-        </DefaultLayout>
+            </div>
+        </div>
         )
     }
 }

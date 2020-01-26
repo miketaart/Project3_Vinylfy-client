@@ -26,8 +26,8 @@ export default class Collection extends Component {
   getCollection = () => {
     axios
       .get(
-        `https://localhost:3000/discogs/user/${this.state.username}`
-        //`https://api.discogs.com/users/${this.state.username}/collection/folders/0/releases`
+        //`https://localhost:3000/discogs/user/${this.state.username}`
+        `https://api.discogs.com/users/${this.state.username}/collection/folders/0/releases`
       ) 
       .then(response => {
         
@@ -77,7 +77,7 @@ export default class Collection extends Component {
   }
 
   render() {
-    let albumUri = encodeURI(this.state.album)
+    //let albumUri = encodeURI(this.state.album)
     return (
       <div className="">
         <div>

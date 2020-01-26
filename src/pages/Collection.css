@@ -9,9 +9,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
-    
-    
 }
 
 .title {
@@ -30,7 +27,7 @@ img {
     width: 50%
 }
 
-body{
+body {
     background-color: #FEDF0D
 }
 

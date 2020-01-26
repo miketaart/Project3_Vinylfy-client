@@ -1,15 +1,21 @@
-import React from 'react'
-import './Home.css'
-//import {Link} from "react-router-dom"
-import Collection from "./Collection.jsx"
+import React from 'react';
+import './Home.css';
+import SideHero from '../components/sideHero.jsx';
+import Header from '../components/header.jsx';
+import Signup from './Signup.jsx';
 
-const Home = () => {
-    return (
-        <div className="home">
+function App() {
+  return (
+    <div className="App">
+      <SideHero />
 
-            
-        </div>
-    )
+      <div className="main">
+        <Header />
+        <Signup />
+      </div>
+      
+    </div>
+  );
 }
 
-export default Home
+export default App;
