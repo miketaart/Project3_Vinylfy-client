@@ -8,7 +8,11 @@ import Signup from "./pages/Signup.jsx";
 import Login from "./pages/Login.jsx";
 import Tracklist from "./pages/Tracklist.jsx";
 
+import testApi from "./pages/testApi.jsx"; //TESTAPI
+
 export default class App extends Component {
+
+  
   render() {
     return (
       <div className="App">
@@ -19,6 +23,8 @@ export default class App extends Component {
           <Route path="/auth/login" component={Login} />
           <Route path="/auth/signup" component={Home} />
           <Route path="/collection/tracklist" component={Tracklist} />
+
+          <Route path="/testApi" exact component={testApi} />
           
         </Switch>
       </div>

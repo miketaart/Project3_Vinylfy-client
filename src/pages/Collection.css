@@ -1,5 +1,42 @@
-.background {
-    background-color: #FEDF0D
+.page-wrapper {
+    background-color: #fff;
+    width: 100%;
+}
+
+.collection-wrapper {
+    padding: 30px 50px;
+    max-width: 1000px;
+}
+
+.intro {
+    width: 50%;
+}
+
+.intro h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.discogs-input {
+    display: flex;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.discogs-input button {
+    width: 30%;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 5px 15px;
+}
+
+.discogs-input input[type=text] {
+    width: 60%;
+    background: #fff;
+}
+
+.release-output-wrapper {
+    width: 100%;
 }
 
 .kaart {
@@ -13,26 +50,21 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .title {
-    display: flex;
-    justify-content: center;
+    text-align: left;
+    margin-top: 30px;
 }
 
 .info {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: top;
     width: 25%;
 }
 
 img {
-    width: 50%
-}
-
-
-
-.lala {
-    width: 25%
+    width: 100%;
 }
