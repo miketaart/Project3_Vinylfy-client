@@ -77,7 +77,7 @@ p, a {
 nav {
   display: flex;
   width: 100%;
-  padding: 30px 30px;
+  padding: 20px 30px;
   justify-content: space-between;
 }
 
@@ -90,6 +90,14 @@ nav {
 
 li {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.selected {
+  color: #FEDF0D;
 }
 
 /* ============
@@ -189,7 +197,7 @@ input, button {
     top: 0;
   }
 
-  .nav-links li {
+  .nav-links li a {
     color: #fff;
   }
 }

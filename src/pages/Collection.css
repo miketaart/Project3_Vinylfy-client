@@ -5,7 +5,7 @@
 
 .collection-wrapper {
     padding: 30px 50px;
-    max-width: 1000px;
+    max-width: 1200px; /* changed from 1000px to 1200px*/
 }
 
 .intro {
@@ -63,8 +63,11 @@
     flex-direction: column;
     justify-content: top;
     width: 25%;
+    margin: 12px 0px 12px 0px; /* added margin */
 }
 
-img {
-    width: 100%;
+.covers { /* added cover size */
+    width: 225px;
+    height: 225px;
+    
 }
