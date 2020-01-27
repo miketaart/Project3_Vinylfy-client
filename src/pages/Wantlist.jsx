@@ -4,33 +4,31 @@ import { Link } from "react-router-dom";
 import './Collection.css';
 import Navbar from "../components/Navbar.jsx"
 
-//GET MY COLLECTION FROM DISCOGS
-export default class Collection extends Component {
+//GET Wantlist FROM DISCOGS
+export default class Wantlist extends Component {
   constructor(props) {
     super(props);
 
-    this.getCollection = this.getCollection.bind(this);
+    this.getWantList = this.getWantList.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   
 
     this.state = {
-      //collection: {},
-      collection: [],
+      wantList: [],
       username: "",
-      album: ""
     };
   }
 
-  getCollection = () => {
+  getWantList = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_BASE}/discogs/collection/user/${this.state.username}`
+        `${process.env.REACT_APP_API_BASE}/discogs/wantlist/user/${this.state.username}`
       )
       .then(response => {
 
         this.setState({
-          collection: response.data.releases,
+          wantList: response.data.wants,
           //album: response.data.releases.basic_information.title,
           error: null
         });
@@ -49,18 +47,17 @@ export default class Collection extends Component {
   }
 
   clickHandler() {
-    this.getCollection();
+    this.getWantList();
   }
 
   render() {
-    let albumUri = encodeURI(this.state.album)
     return (
       <div className="page-wrapper">
         <Navbar />
         <div className="collection-wrapper">
           <div className="intro">
             <h1>Hi, miketaart!</h1>
-            <h1>Import a vinyl collection and start listening to your favourites tunes, or your friends’. </h1>
+            <h1>Import a wantlist. </h1>
 
             <div className="discogs-input">
               <input
@@ -76,11 +73,11 @@ export default class Collection extends Component {
 
         
 
-          <h1 className="title">My vinyl collection</h1>
+          <h1 className="title">My vinyl wantlist</h1>
 
           <div className="release-output-wrapper">
             <div className="release">
-              {this.state.collection.map((release, index) => {
+              {this.state.wantList.map((release, index) => {
                 //let albumUri = encodeURI(release.basic_information.title)
                 return (
                   <div className="info" key={index}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Home.css';
-import SideHero from '../components/sideHero.jsx';
-import Header from '../components/header.jsx';
+//import SideHero from '../components/sideHero.jsx';
+//import Header from '../components/header.jsx';
 //import {login} from "../utils/auth";
 
 export default class Login extends Component {

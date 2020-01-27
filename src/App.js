@@ -7,6 +7,7 @@ import Collection from "./pages/Collection.jsx";
 import Signup from "./pages/Signup.jsx";
 import Login from "./pages/Login.jsx";
 import Tracklist from "./pages/Tracklist.jsx";
+import Wantlist from "./pages/Wantlist.jsx";
 
 import testApi from "./pages/testApi.jsx"; //TESTAPI
 
@@ -20,8 +21,9 @@ export default class App extends Component {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/collection" component={Collection} />
+          <Route path="/wantlist" component={Wantlist} />
           <Route path="/auth/" component={Home} />
-          <Route path="/collection/tracklist" component={Tracklist} />
+          <Route path="/tracklist" exact component={Tracklist} />
 
           <Route path="/testApi" exact component={testApi} />
 
