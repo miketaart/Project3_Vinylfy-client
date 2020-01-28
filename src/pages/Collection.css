@@ -62,12 +62,19 @@
     display: flex;
     flex-direction: column;
     justify-content: top;
-    width: 25%;
-    margin: 12px 0px 12px 0px; /* added margin */
+    width: 20%;
+    margin: 6px 24px 6px 0px; /* added margin */
 }
 
-.covers { /* added cover size */
-    width: 225px;
-    height: 225px;
+.covers {
+    width: 100%;
+    height: 200px
     
+    
+}
+
+.covers:after {
+    content:"";
+    display: block;
+    padding-top: 100%
 }

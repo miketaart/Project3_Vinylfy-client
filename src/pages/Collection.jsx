@@ -53,7 +53,7 @@ export default class Collection extends Component {
   }
 
   render() {
-    let albumUri = encodeURI(this.state.album)
+    //let albumUri = encodeURI(this.state.album)
     return (
       <div className="page-wrapper">
         <Navbar />
@@ -87,16 +87,20 @@ export default class Collection extends Component {
                     <Link to={encodeURIComponent(release.basic_information.title)}><img className="covers" src={release.basic_information.cover_image} alt="lp" /></Link>
 
                     <div className="">
-                      <h3>
-                        Album: {release.basic_information.title} ({release.basic_information.year})
-                        </h3>
-                      <p>Artist: {release.basic_information.artists[0].name}</p>
+                      <h4>
+                        {release.basic_information.title}
+                        </h4>
+                      <p>{release.basic_information.artists[0].name}</p>
                     </div>
                   </div>
                 );
               })}
             </div>
+
+            <div>lala</div>
+            
           </div>
+
         </div>
       </div>
     );
