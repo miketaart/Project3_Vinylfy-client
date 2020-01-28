@@ -66,6 +66,8 @@
     margin: 6px 24px 6px 0px; /* added margin */
 }
 
+
+/* TEST///////////////////////////TEST///////////////////////////TEST///////////////////////////TEST */
 .covers {
     width: 100%;
     height: 200px
@@ -78,3 +80,13 @@
     display: block;
     padding-top: 100%
 }
+
+.tracklist {
+    width: 33%;
+}
+
+.testbutton {
+    margin: 0 0 24px 0
+}
+
+/* TEST///////////////////////////TEST///////////////////////////TEST///////////////////////////TEST */

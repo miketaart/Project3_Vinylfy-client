@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import '../pages/Collection.css';
 //import { Link } from "react-router-dom";
 
 export default class Tracklist extends Component {
@@ -19,9 +20,9 @@ export default class Tracklist extends Component {
     }
 
     getAlbumId = () => {
-
+        debugger
         axios.get(
-            `${process.env.REACT_APP_API_BASE}/spotify/album/thickfreakness`
+            `${process.env.REACT_APP_API_BASE}/spotify/album/${this.props.match.params.album_name}`
             //`https://api.spotify.com/v1/search?q=thickfreakness&type=track`
 
         )
@@ -58,20 +59,34 @@ export default class Tracklist extends Component {
         this.getTrackList();
     }
 
+    componentDidMount() {
+        this.getAlbumInfo();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.album_name !== prevProps.match.params.album_name) {
+            this.getAlbumInfo();
+        }
+    }
+
     render() {
-
+        debugger
         return (
-            <div>
-                <button onClick={this.getAlbumInfo} > GET INFO</button>
+            <div className="tracklist">
+                <div className="release" >
+                    <button className="testbutton" onClick={this.getAlbumInfo} > GET INFO</button>
 
-                <div>
-                    <img src={this.state.albumCover} />
-                    <h1>{this.state.albumTitle}</h1>
-                    <h3>{this.state.artist}</h3>
-                    {this.state.trackList.map((track, index) =>
-                        <p key={index}>{index+1}. {track.name}</p>
-                    )}
+                    <div>
+                        <img src={this.state.albumCover} />
+                        <h1>{this.state.albumTitle}</h1>
+                        <h3>{this.state.artist}</h3>
+
+                        {this.state.trackList.map((track, index) =>
+                            <p key={index}>{index + 1}. {track.name}</p>
+                        )}
+                    </div>
                 </div>
+
             </div>
         )
     }
