@@ -9,6 +9,7 @@ import { Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
+    <div className="home-wrapper">
       <SideHero />
 
       <div className="main">
@@ -16,7 +17,7 @@ function App() {
         <Route path="/auth/signup" component={Signup} />
         <Route path="/auth/login" component={Login} />
       </div>
-
+    </div>
     </div>
   );
 }

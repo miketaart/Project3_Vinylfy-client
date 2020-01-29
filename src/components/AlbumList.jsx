@@ -14,8 +14,6 @@ export default class Collection extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         //this.getAlbumInfo = this.getAlbumInfo.bind(this);
 
-
-
         this.state = {
             collection: [],
             username: "",
@@ -35,6 +33,7 @@ export default class Collection extends Component {
                     //album: response.data.releases.basic_information.title,
                     error: null
                 });
+                
             })
             .catch(error => {
                 this.setState({
@@ -47,6 +46,7 @@ export default class Collection extends Component {
         this.setState({
             username: e.target.value
         });
+        
     }
 
 
@@ -79,7 +79,7 @@ export default class Collection extends Component {
                     <div className="release">
                         {this.state.collection.map((release, index) => {
                             //{encodeURIComponent(release.basic_information.title)}
-                            debugger
+                            
                             return (
                                 <div className="info" key={index}>
                                     <Link to={`/collection/${release.basic_information.title}`}><img className="covers" src={release.basic_information.cover_image} alt="lp" /></Link>

@@ -17,7 +17,6 @@ export default class Collection extends Component {
         <Navbar />
         <AlbumList />
         <Route path="/collection/:album_name" component={Tracklist} />
-
       </div>
     );
   }

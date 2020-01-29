@@ -15,12 +15,12 @@ export default class Tracklist extends Component {
             trackList: [],
             albumInfo: {},
             albumTitle: "",
-            albumCover: ""
+            albumCover: "",
         }
     }
 
     getAlbumId = () => {
-        debugger
+       
         axios.get(
             `${process.env.REACT_APP_API_BASE}/spotify/album/${this.props.match.params.album_name}`
             //`https://api.spotify.com/v1/search?q=thickfreakness&type=track`
@@ -30,11 +30,12 @@ export default class Tracklist extends Component {
                 this.setState({
                     albumId: response.data.tracks.items[0].album.id,
                     albumInfo: response.data.tracks.items,
-                    albumTitle: response.data.tracks.items[0].name,
+                    albumTitle: response.data.tracks.items[0].album.name,
                     artist: response.data.tracks.items[0].artists[0].name,
                     albumCover: response.data.tracks.items[0].album.images[1].url,
                     error: null
                 });
+                console.log(this.state.albumTitle)
             })
             .catch((err) => { console.log("ERROR DURING AXIOS", err) })
     };
@@ -42,6 +43,7 @@ export default class Tracklist extends Component {
     getTrackList = () => {
         axios.get(
             `${process.env.REACT_APP_API_BASE}/spotify/album/tracklist/0GJH6shkenNdqkpGdsY8aa`
+            //${this.state.albumId}
         )
             .then(response => {
 
@@ -53,10 +55,11 @@ export default class Tracklist extends Component {
             .catch((err) => { console.log("ERROR DURING AXIOS", err) })
     }
 
-
     getAlbumInfo() {
+        
         this.getAlbumId();
         this.getTrackList();
+        console.log("TEST",this.state.albumId)
     }
 
     componentDidMount() {
@@ -70,15 +73,14 @@ export default class Tracklist extends Component {
     }
 
     render() {
-        debugger
+        
         return (
             <div className="tracklist">
                 <div className="release" >
-                    <button className="testbutton" onClick={this.getAlbumInfo} > GET INFO</button>
 
                     <div>
                         <img src={this.state.albumCover} />
-                        <h1>{this.state.albumTitle}</h1>
+                        <h2>{this.state.albumTitle}</h2>
                         <h3>{this.state.artist}</h3>
 
                         {this.state.trackList.map((track, index) =>
