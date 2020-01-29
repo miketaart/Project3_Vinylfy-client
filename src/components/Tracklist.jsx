@@ -25,11 +25,12 @@ export default class Tracklist extends Component {
         axios.get(`${process.env.REACT_APP_API_BASE}/spotify/album/${this.props.match.params.album_name}`) //changed type: "track" into "album"
             .then(({ data }) => {
                 //debugger
-                music = { 
-                    ...data.albums, 
-                    albumCover: data.albums.items[0].images[1].url, 
-                    albumTitle: data.albums.items[0].name, 
-                    artist: data.albums.items[0].artists[0].name };
+                music = {
+                    ...data.albums,
+                    albumCover: data.albums.items[0].images[1].url,
+                    albumTitle: data.albums.items[0].name,
+                    artist: data.albums.items[0].artists[0].name
+                };
 
                 return axios.get(`${process.env.REACT_APP_API_BASE}/spotify/album/tracklist/${music.items[0].id}`)
             })
@@ -56,20 +57,24 @@ export default class Tracklist extends Component {
     render() {
 
         return (
-            <div className="tracklist">
-                <div className="release" >
-                    <div>
-                        <img src={this.state.music.albumCover} />
-                        <h2>{this.state.music.albumTitle}</h2>
-                        <h3>{this.state.music.artist}</h3>
-
+            <div className="tracklist-wrapper">
+                <div className="tracklist" >
+                    <div className="tracklist-header">
+                        <div className="tracklist-img">
+                            <img src={this.state.music.albumCover} />
+                        </div>
+                        <div className="tracklist-title">
+                            <h2>{this.state.music.albumTitle}</h2>
+                            <h3>{this.state.music.artist}</h3>
+                        </div>
+                    </div>
+                    
+                    <div className="tracklist-output">
                         {this.state.music.trackList.map((track, index) =>
                             <p key={index}>{index + 1}. {track.name}</p>
                         )}
-                        
                     </div>
                 </div>
-
             </div>
         )
     }

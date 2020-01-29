@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import '../pages/Collection.css';
-//import { getCollection } from "../utils/apiLogic"
 
 //GET MY COLLECTION FROM DISCOGS
 export default class Collection extends Component {
@@ -45,12 +44,10 @@ export default class Collection extends Component {
         this.setState({
             username: e.target.value
         });
-        
     }
 
 
     render() {
-        //let albumUri = encodeURI(this.state.album)
         return (
 
             <div className="collection-wrapper">
@@ -80,8 +77,10 @@ export default class Collection extends Component {
                             //{encodeURIComponent(release.basic_information.title)}
                             
                             return (
-                                <div className="info" key={index}>
-                                    <Link to={`/collection/${release.basic_information.title}`}><img className="covers" src={release.basic_information.cover_image} alt="lp" /></Link>
+                                <div className="release-details" key={index}>
+                                    <Link to={`/collection/${release.basic_information.title}`}>
+                                    <img className="cover" src={release.basic_information.cover_image} alt="lp" />
+                                    </Link>
 
                                     <div className="">
                                         <h4>

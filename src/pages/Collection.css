@@ -1,11 +1,40 @@
+.navFullWidth {
+    width: 100%;
+}
+
 .page-wrapper {
     background-color: #fff;
     width: 100%;
 }
 
 .collection-wrapper {
-    padding: 30px 0px 30px 33px;/* changed left padding to 30px */
-    max-width: 1100px; /* changed from 1000px to 1100px*/
+    height: 100vh;
+    padding: 100px 30px 50px 30px;
+    width: 70%;
+}
+
+.tracklist-header {
+    display: flex;
+    margin-top: 90px;
+}
+
+.tracklist {
+    width: 30%;
+    padding-top: 100px;
+    background-color: #FEDF0D;
+    height: 100vh;
+    position: fixed;
+    padding: 50px 50px;
+    top: 0;
+}
+
+.tracklist-title {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.tracklist-output p {
+    line-height: 30px;
 }
 
 .intro {
@@ -56,66 +85,71 @@
 .title {
     text-align: left;
     margin-top: 30px;
+    margin-bottom: 40px;
 }
 
-.info {
-    display: flex;
-    flex-direction: column;
+.release-details {
     justify-content: top;
-    width: 20%;
-    margin: 6px 24px 6px 0px; /* added margin */
+    flex-basis: 150px;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 button:focus{
     outline:none;
  }
 
+ .tracklist-img {
+     height: 200px;
+     width: 200px;
+ }
+
+ .tracklist-img img {
+     width: 100%;
+     object-fit: cover;
+ }
+
 
 /* TEST///////////////////////////TEST///////////////////////////TEST///////////////////////////TEST */
-.covers {
-    width: 200px;
-    height: 200px;
+.cover {
+    width: 170px;
+    height: 170px;
     object-fit: cover;    
 }
 
-.covers:after {
+/* .covers:after {
     content:"";
     display: block;
-}
+} */
 
-.tracklist {
+/* .tracklist {
     width: 33%;
-}
+} */
 
-.testbutton {
-    margin: 0 0 24px 0
-}
 
 /* TEST///////////////////////////TEST///////////////////////////TEST///////////////////////////TEST */
 
 @media only screen and (max-width: 950px) {
     .intro, .discogs-input input[type=text] {
-        width: 100%;
+        width: 80%;
     }
 
     .collection-wrapper {
-        margin-top: 25px;
-        width: 100%;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .tracklist-header {
+        flex-direction: column;
     }
 
-    .covers {
-        width: 150px;
-        height: 150px;
+    .tracklist-title {
+        padding-left: 0;
+        padding-bottom: 20px;
     }
 }
 
 @media only screen and (max-width: 650px) {
-    .info {
-        width: 40%;
-    }
-
-    .covers {
-        width: 200px;
-        height: 200px;
-    }
+    
 }

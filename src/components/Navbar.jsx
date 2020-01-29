@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom"
 
 function Navbar() {
     return (
-        <div className="header">
+        <div>
             <nav>
                 <div className="logo">
                     <NavLink to="/collection"><img src={logo} alt="pic" /></NavLink>

@@ -6,6 +6,7 @@ import AlbumList from "../components/AlbumList.jsx"
 import Tracklist from "../components/Tracklist.jsx"
 
 
+
 //GET MY COLLECTION FROM DISCOGS
 export default class Collection extends Component {
 
@@ -13,7 +14,7 @@ export default class Collection extends Component {
     //let albumUri = encodeURI(this.state.album)
     return (
       <div className="page-wrapper">
-        <Navbar />
+        <Navbar className="navFullWidth" />
         <AlbumList />
         <Route path="/collection/:album_name" component={Tracklist} />
       </div>

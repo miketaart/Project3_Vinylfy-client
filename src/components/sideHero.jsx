@@ -7,9 +7,9 @@ function SideHero() {
         <div className="hero-wrapper">
             <img src={heroImg} alt="pic" />
 
-            <div class="hero-text">
-                <h1 class="hero-h1">View and play</h1><br></br>
-                <h1 class="hero-h1">your vinyl collection</h1>
+            <div className="hero-text">
+                <h1 className="hero-h1">View and play</h1><br></br>
+                <h1 className="hero-h1">your vinyl collection</h1>
             </div>
 
         </div>
