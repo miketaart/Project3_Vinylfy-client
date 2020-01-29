@@ -20,30 +20,32 @@ export default class Tracklist extends Component {
     }
 
     getAlbumId = () => {
-       
+
         axios.get(
-            `${process.env.REACT_APP_API_BASE}/spotify/album/${this.props.match.params.album_name}`
+            `${process.env.REACT_APP_API_BASE}/spotify/album/${this.props.match.params.album_name}` //changed type: "track" into "album"
             //`https://api.spotify.com/v1/search?q=thickfreakness&type=track`
 
         )
             .then(response => {
                 this.setState({
-                    albumId: response.data.tracks.items[0].album.id,
-                    albumInfo: response.data.tracks.items,
-                    albumTitle: response.data.tracks.items[0].album.name,
-                    artist: response.data.tracks.items[0].artists[0].name,
-                    albumCover: response.data.tracks.items[0].album.images[1].url,
+                    albumId: response.data.albums.items[0].id,
+                    albumInfo: response.data.albums.items[0],
+                    albumTitle: response.data.albums.items[0].name,
+                    artist: response.data.albums.items[0].artists[0].name,
+                    albumCover: response.data.albums.items[0].images[1].url,
                     error: null
                 });
-                console.log(this.state.albumTitle)
+                //console.log(this.state.albumTitle)
             })
             .catch((err) => { console.log("ERROR DURING AXIOS", err) })
     };
 
     getTrackList = () => {
         axios.get(
-            `${process.env.REACT_APP_API_BASE}/spotify/album/tracklist/0GJH6shkenNdqkpGdsY8aa`
-            //${this.state.albumId}
+            `${process.env.REACT_APP_API_BASE}/spotify/album/tracklist/${this.state.albumId}`
+            //Thriller       -->   1C2h7mLntPSeVYciMRTF4a
+            //Thickfreakness -->   0GJH6shkenNdqkpGdsY8aa
+            //Variable       -->   ${this.state.albumId}
         )
             .then(response => {
 
@@ -56,24 +58,26 @@ export default class Tracklist extends Component {
     }
 
     getAlbumInfo() {
-        
         this.getAlbumId();
         this.getTrackList();
-        console.log("TEST",this.state.albumId)
     }
 
     componentDidMount() {
         this.getAlbumInfo();
+        //console.log("ComponentTDidMount", this.state.albumId)
+
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.match.params.album_name !== prevProps.match.params.album_name) {
             this.getAlbumInfo();
+            //console.log("ComponentDidUpdate", this.state.albumId)
+            //console.log("ComponentTDidMount", this.state.trackList)
         }
     }
 
     render() {
-        
+        // first tracklist has to update the state before you can map otherwise it will map over something that has no state yet --> gives you undefined. use && 
         return (
             <div className="tracklist">
                 <div className="release" >
@@ -83,7 +87,7 @@ export default class Tracklist extends Component {
                         <h2>{this.state.albumTitle}</h2>
                         <h3>{this.state.artist}</h3>
 
-                        {this.state.trackList.map((track, index) =>
+                        {this.state.trackList && this.state.trackList.map((track, index) =>
                             <p key={index}>{index + 1}. {track.name}</p>
                         )}
                     </div>

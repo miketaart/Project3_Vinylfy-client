@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import '../pages/Collection.css';
-import Navbar from "../components/Navbar.jsx"
 //import { getCollection } from "../utils/apiLogic"
 
 //GET MY COLLECTION FROM DISCOGS

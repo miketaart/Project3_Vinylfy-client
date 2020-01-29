@@ -23,8 +23,7 @@ export default class App extends Component {
           <Route path="wantlist" component={Wantlist} />
           <Route path="/auth/" component={Home} />
           <Route path="/tracklist" component={Tracklist} />
-          {/* <Route path="/tracks" exact component={getTracks} /> */}
-          {/* <Route path="/testApi" exact component={testApi} /> */}
+
 
         </Switch>
       </div>

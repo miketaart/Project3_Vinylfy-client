@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { Link, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import './Collection.css';
 import Navbar from "../components/Navbar.jsx"
 import AlbumList from "../components/AlbumList.jsx"
