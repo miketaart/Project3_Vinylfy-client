@@ -15,6 +15,7 @@ export default class Collection extends Component {
         this.state = {
             collection: [],
             username: "",
+            title: ""
         };
     }
 
@@ -28,7 +29,7 @@ export default class Collection extends Component {
 
                 this.setState({
                     collection: response.data.releases,
-                    //album: response.data.releases.basic_information.title,
+                    title: "My vinyl collection",
                     error: null
                 });
                 
@@ -42,7 +43,7 @@ export default class Collection extends Component {
 
     handleInputChange(e) {
         this.setState({
-            username: e.target.value
+            username: e.target.value.replace(/[^\w\s]/gi, "")
         });
     }
 
@@ -52,13 +53,15 @@ export default class Collection extends Component {
 
             <div className="collection-wrapper">
                 <div className="intro">
-                    <h1>Hi, miketaart!</h1>
+                    <h1>Hi, [username]!</h1>
                     <h1>Import a vinyl collection and start listening to your favourites tunes, or your friends’. </h1>
 
                     <div className="discogs-input">
                         <input
                             name="username"
-                            type="text"
+                            type="search"
+                            pattern="[^'\x22]+" 
+                            title="Invalid input"
                             placeholder="Search by Discogs username"
                             onChange={this.handleInputChange}
                         />
@@ -69,7 +72,7 @@ export default class Collection extends Component {
 
 
 
-                <h1 className="title">My vinyl collection</h1>
+                <h1 className="title">{this.state.title}</h1>
 
                 <div className="release-output-wrapper">
                     <div className="release">

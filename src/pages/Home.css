@@ -102,19 +102,18 @@ a {
   text-decoration: none;
 }
 
-.navlinks li a:before {
+.selected {
+  position: relative;
+}
+
+.selected:before {
   content: "";
   position: absolute;
   width: 100%;
   height: 3px;
-  bottom: 0;
+  bottom: -4px;
   left: 0;
   background-color: #FEDF0D;
-  visibility: hidden;
-}
-
-.navlinks li a.selected:before {
-  visibility: visible !important;
 }
 
 /* ============
