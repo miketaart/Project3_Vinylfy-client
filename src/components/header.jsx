@@ -2,9 +2,13 @@ import React from 'react';
 import './../pages/Home.css';
 import logo from './../images/logo.png';
 import { NavLink } from "react-router-dom";
+import {getUser} from "../utils/auth";
+import {Fragment} from "react";
 
-function Header() {
+const Header = () => {
+    let user = getUser()
     return (
+        <Fragment>
         <div>
             <nav className="header">
                 <div className="logo">
@@ -16,6 +20,7 @@ function Header() {
                 </ul>
             </nav>
         </div>
+        </Fragment>
     );
 }
 

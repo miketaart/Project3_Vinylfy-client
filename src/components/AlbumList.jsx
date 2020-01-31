@@ -32,7 +32,7 @@ export default class Collection extends Component {
                     title: "My vinyl collection",
                     error: null
                 });
-                
+
             })
             .catch(error => {
                 this.setState({
@@ -60,7 +60,7 @@ export default class Collection extends Component {
                         <input
                             name="username"
                             type="search"
-                            pattern="[^'\x22]+" 
+                            pattern="[^'\x22]+"
                             title="Invalid input"
                             placeholder="Search by Discogs username"
                             onChange={this.handleInputChange}
@@ -78,11 +78,11 @@ export default class Collection extends Component {
                     <div className="release">
                         {this.state.collection.map((release, index) => {
                             //{encodeURIComponent(release.basic_information.title)}
-                            
+
                             return (
                                 <div className="release-details" key={index}>
                                     <Link to={`/collection/${release.basic_information.title}`}>
-                                    <img className="cover" src={release.basic_information.cover_image} alt="lp" />
+                                        <img className="cover" src={release.basic_information.cover_image} alt="lp" />
                                     </Link>
 
                                     <div className="">

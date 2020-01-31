@@ -6,18 +6,18 @@ import Signup from './Signup.jsx';
 import Login from './Login.jsx';
 import { Route } from "react-router-dom";
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-    <div className="home-wrapper">
-      <SideHero />
+      <div className="home-wrapper">
+        <SideHero />
 
-      <div className="main">
-        <Header />
-        <Route path="/auth/signup" component={Signup} />
-        <Route path="/auth/login" component={Login} />
+        <div className="main">
+          <Header />
+          <Route path="/auth/signup" component={Signup} />
+          <Route path="/auth/login" component={Login} />
+        </div>
       </div>
-    </div>
     </div>
   );
 }

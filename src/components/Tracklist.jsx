@@ -20,11 +20,11 @@ export default class Tracklist extends Component {
     }
 
     getAlbumInfoWithTrackList() {
-        //debugger
+        // 
         var music = {};
         axios.get(`${process.env.REACT_APP_API_BASE}/spotify/album/${this.props.match.params.album_name}`) //changed type: "track" into "album"
             .then(({ data }) => {
-                //debugger
+                // 
                 music = {
                     ...data.albums,
                     albumCover: data.albums.items[0].images[1].url,
@@ -35,7 +35,7 @@ export default class Tracklist extends Component {
                 return axios.get(`${process.env.REACT_APP_API_BASE}/spotify/album/tracklist/${music.items[0].id}`)
             })
             .then(({ data }) => {
-                //debugger
+                // 
                 music = { ...music, trackList: data.items }
                 this.setState({ music })
             })
@@ -68,7 +68,7 @@ export default class Tracklist extends Component {
                             <h3>{this.state.music.artist}</h3>
                         </div>
                     </div>
-                    
+
                     <div className="tracklist-output">
                         {this.state.music.trackList.map((track, index) =>
                             <p key={index}>{index + 1}. {track.name}</p>

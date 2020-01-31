@@ -1,74 +1,113 @@
 import React, { Component } from 'react'
 import './Home.css';
-//import SideHero from '../components/sideHero.jsx';
-//import Header from '../components/header.jsx';
-//import {login} from "../utils/auth";
+import axios from "axios";
+import qs from "qs";
 
 export default class Login extends Component {
 
     constructor(props) {
         super(props)
+
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.onChangeUsername = this.onChangeUsername.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
+        //this.handleLogoutClick = this.handleLogoutClick.bind(this);
+
         this.state = {
-            userSession: {
-                username: "",
-                password: ""
-            },
+            username: "",
+            password: "",
             error: null
         }
     }
 
-    handleInputChange(e) {
-        let userSessionCopy = { ...this.state.userSession };
-        userSessionCopy[e.target.name] = e.target.value;
+    onChangeUsername(e) {
         this.setState({
-            userSession: userSessionCopy
+            username: e.target.value
         });
     }
 
+    onChangePassword(e) {
+        this.setState({
+            password: e.target.value
+        });
+    }
+
+    handleLoginClick(e) {
+        e.preventDefault();
+
+        let user = {
+            username: this.state.username,
+            password: this.state.password
+        }
+
+        axios({
+            method: "POST",
+            url: 'http://localhost:8000/auth/login',
+            data: qs.stringify(user),
+            headers: {
+                'Content-Type': "application/x-www-form-urlencoded"
+            }
+        })
+            .then(res => {
+                window.localStorage.setItem("user", JSON.stringify(res.data))
+                this.setState({
+                    error: null
+                }, () => {
+                    this.props.history.push("/collection")
+                });
+            })
+            .catch((err) => {
+
+            })
+
+    }
+
+
+
     render() {
-        debugger
         return (
-
-
             <div className="form-wrapper">
                 <div className="form-content">
                     <h1>Log in to your Vinylfy account</h1>
 
                     <p>Log in to view your vinyl collection and play your favourite records.</p>
 
-                    <div className="input-wrapper">
-                        <label className="">Username</label>
-                        <div className="">
-                            <input
-                                className=""
-                                onChange={this.handleInputChange}
-                                value={this.state.username}
-                                name="username"
-                                type="text"
-                                placeholder="username"
-                            />
+                    <form onSubmit={this.handleLoginClick}>
+                        <div className="input-wrapper">
+                            <label className="">Username</label>
+                            <div className="">
+                                <input
+                                    className=""
+                                    onChange={this.onChangeUsername}
+                                    value={this.state.username}
+                                    name="username"
+                                    type="text"
+                                    placeholder="username"
+                                />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="input-wrapper">
-                        <label className="">Password</label>
-                        <div className="">
-                            <input
-                                className=""
-                                onChange={this.handleInputChange}
-                                value={this.state.password}
-                                name="password"
-                                type="password"
-                                placeholder="password"
-                            />
+                        <div className="input-wrapper">
+                            <label className="">Password</label>
+                            <div className="">
+                                <input
+                                    className=""
+                                    onChange={this.onChangePassword}
+                                    value={this.state.password}
+                                    name="password"
+                                    type="password"
+                                    placeholder="password"
+                                />
+                            </div>
                         </div>
-                    </div>
 
-                    <button
-                        className="form-button"
-                    >
-                        Log In
+                        <button
+                            className="form-button"
+                            type="submit"
+                        >
+                            Log In
                     </button>
+                    </form>
                 </div>
             </div>
         )
