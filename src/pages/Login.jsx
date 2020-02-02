@@ -11,7 +11,6 @@ export default class Login extends Component {
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
-        //this.handleLogoutClick = this.handleLogoutClick.bind(this);
 
         this.state = {
             username: "",
@@ -48,17 +47,11 @@ export default class Login extends Component {
                 'Content-Type': "application/x-www-form-urlencoded"
             }
         })
-            .then(res => {
-                window.localStorage.setItem("user", JSON.stringify(res.data))
-                this.setState({
-                    error: null
-                }, () => {
-                    this.props.history.push("/collection")
-                });
-            })
-            .catch((err) => {
-
-            })
+        .then(res => {
+            window.localStorage.setItem("user", JSON.stringify(res.data))
+            this.props.history.push("/collection")
+        })
+        .catch((err) => {})
 
     }
 
@@ -101,12 +94,10 @@ export default class Login extends Component {
                             </div>
                         </div>
 
-                        <button
-                            className="form-button"
-                            type="submit"
-                        >
+                        <button className="form-button" type="submit">
                             Log In
-                    </button>
+                        </button>
+                        
                     </form>
                 </div>
             </div>

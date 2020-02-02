@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import '../pages/Collection.css';
+import {getUser} from "../utils/auth";
+
 
 //GET MY COLLECTION FROM DISCOGS
 export default class Collection extends Component {
@@ -49,11 +51,12 @@ export default class Collection extends Component {
 
 
     render() {
+        let user = getUser();
         return (
 
             <div className="collection-wrapper">
                 <div className="intro">
-                    <h1>Hi, [username]!</h1>
+                    <h1>Hi, {user.username}!</h1>
                     <h1>Import a vinyl collection and start listening to your favourites tunes, or your friends’. </h1>
 
                     <div className="discogs-input">

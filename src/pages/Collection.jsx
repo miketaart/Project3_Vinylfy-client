@@ -1,9 +1,11 @@
-import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import React, { Component, Fragment } from "react";
+import { Route, Redirect } from "react-router-dom";
 import './Collection.css';
 import Navbar from "../components/Navbar.jsx"
 import AlbumList from "../components/AlbumList.jsx"
 import Tracklist from "../components/Tracklist.jsx"
+import {getUser} from "../utils/auth.jsx"
+import Home from "../pages/Home"
 
 
 
@@ -11,13 +13,22 @@ import Tracklist from "../components/Tracklist.jsx"
 export default class Collection extends Component {
 
   render() {
-    //let albumUri = encodeURI(this.state.album)
+   let user = getUser()
     return (
-      <div className="page-wrapper">
-        <Navbar className="navFullWidth" />
-        <AlbumList />
-        <Route path="/collection/:album_name" component={Tracklist} />
-      </div>
+      <Fragment>
+        {user ?
+          <div className="page-wrapper">
+            <Navbar className="navFullWidth" />
+            <AlbumList />
+            <Route path="/collection/:album_name" component={Tracklist} />
+          </div>
+        :
+        
+        <Redirect to="/auth/login" />
+        
+        }
+      </Fragment>
+      
     );
   }
 }

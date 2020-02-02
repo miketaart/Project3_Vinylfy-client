@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import qs from "qs";
+import { withRouter } from "react-router-dom" 
+//https://stackoverflow.com/questions/46757676/in-react-is-it-always-better-to-render-a-redirect-than-use-this-props-history-pu?rq=1
+//if you want push.history to work when you render a component instead of directly calling it
+//then wrap the component in withRouter()
 
-
-export default class Signup extends Component {
+class Signup extends Component {
 
     constructor(props) {
         super(props)
@@ -12,7 +15,6 @@ export default class Signup extends Component {
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
-        //this.setUser = this.setUser.bind(this);
 
         this.state = {
             email: "",
@@ -57,18 +59,13 @@ export default class Signup extends Component {
                 'Content-Type': "application/x-www-form-urlencoded"
             }
         })
-            .then(response => {
-                window.localStorage.setItem("user", JSON.stringify(response.data))
-                this.setState({
-                    error: null
-                }, () => {
-                    this.props.history.push("/collection")
-                });
-            })
-            .catch((error) => {
-                this.setState({error: error.response && error.response.data})
+        .then(response => {
+            window.localStorage.setItem("user", JSON.stringify(response.data))
+            this.props.history.push("/collection")
+        })
+        .catch((error) => {
                 
-            })
+        })
     }
 
     render() {
@@ -122,15 +119,15 @@ export default class Signup extends Component {
                             </div>
                         </div>
 
-                        <button
-                            className="form-button"
-                            type="submit"
-                        >
+                        <button className="form-button" type="submit">
                             Sign Up
-                </button>
+                        </button>
+
                     </form>
                 </div>
             </div>
         )
     }
 }
+
+export default withRouter(Signup); 
