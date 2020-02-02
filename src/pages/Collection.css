@@ -26,6 +26,7 @@
     position: fixed;
     padding: 50px 50px;
     top: 0;
+    overflow: scroll;
 }
 
 .tracklist-title {
@@ -74,7 +75,7 @@
     justify-content: center;
 }
 
-.release{
+.release {
     margin: 6px;
     display: flex;
     flex-direction: row;
@@ -95,26 +96,24 @@
     margin-bottom: 20px;
 }
 
-button:focus{
-    outline:none;
- }
+button:focus {
+    outline: none;
+}
 
- .tracklist-img {
-     height: 200px;
-     width: 200px;
- }
 
- .tracklist-img img {
-     width: 100%;
-     object-fit: cover;
- }
+
+.tracklist-img img {
+    height: 144px;
+    width: 144px;
+    object-fit: cover;
+}
 
 
 /* TEST///////////////////////////TEST///////////////////////////TEST///////////////////////////TEST */
 .cover {
     width: 170px;
     height: 170px;
-    object-fit: cover;    
+    object-fit: cover;
 }
 
 /* .covers:after {
@@ -130,7 +129,9 @@ button:focus{
 /* TEST///////////////////////////TEST///////////////////////////TEST///////////////////////////TEST */
 
 @media only screen and (max-width: 950px) {
-    .intro, .discogs-input input[type=text] {
+
+    .intro,
+    .discogs-input input[type=text] {
         width: 80%;
     }
 
@@ -150,6 +151,4 @@ button:focus{
     }
 }
 
-@media only screen and (max-width: 650px) {
-    
-}
+@media only screen and (max-width: 650px) {}

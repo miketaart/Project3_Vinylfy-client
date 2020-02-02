@@ -90,8 +90,8 @@ nav {
 .nav-links {
   display: flex;
   align-items: center;
-  width: 150px;
-  justify-content: space-between;
+  width: 200px;
+  justify-content: space-around;
 }
 
 li {

@@ -6,6 +6,7 @@ import Login from './Login.jsx';
 import { Route } from "react-router-dom";
 import Navbar from '../components/Navbar.jsx'
 import {getUser} from '../utils/auth.jsx'
+import ReactPlayer from 'react-player'
 
 function App(props) {
   let user = getUser()
@@ -17,6 +18,7 @@ function App(props) {
 
         <div className="main">
           <Navbar />
+          
           <Route path="/auth/signup" component={Signup} />
           <Route path="/auth/login" component={Login} />
         </div>

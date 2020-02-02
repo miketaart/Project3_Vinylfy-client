@@ -12,12 +12,13 @@ export default class Collection extends Component {
 
         this.getCollection = this.getCollection.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        //this.getAlbumInfo = this.getAlbumInfo.bind(this);
+        //this.sortByName = this.sortByName.bind(this);
 
         this.state = {
             collection: [],
             username: "",
-            title: ""
+            //basic_information:[],
+            header: ""
         };
     }
 
@@ -31,7 +32,8 @@ export default class Collection extends Component {
 
                 this.setState({
                     collection: response.data.releases,
-                    title: "My vinyl collection",
+                    //basic_information: response.data.releases.basic_information,
+                    header: "My vinyl collection",
                     error: null
                 });
 
@@ -48,6 +50,14 @@ export default class Collection extends Component {
             username: e.target.value.replace(/[^\w\s]/gi, "")
         });
     }
+
+    // sortByName = () => {
+    //     this.setState({
+    //         basic_information: this.state.basic_information.sort(function(a, b) {
+    //         return a.title.localeCompare(b.title);
+    //         })
+    //     });
+    // };
 
 
     render() {
@@ -75,12 +85,12 @@ export default class Collection extends Component {
 
 
 
-                <h1 className="title">{this.state.title}</h1>
+                <h1 className="title">{this.state.header}</h1>
 
                 <div className="release-output-wrapper">
                     <div className="release">
+                    {/* <button onClick={this.sortByName}>a-z</button> */}
                         {this.state.collection.map((release, index) => {
-                            //{encodeURIComponent(release.basic_information.title)}
 
                             return (
                                 <div className="release-details" key={index}>
