@@ -53,7 +53,7 @@ class Signup extends Component {
 
         axios({
             method: "POST",
-            url: 'http://localhost:8000/auth/signup',
+            url: `${process.env.REACT_APP_API_BASE}/auth/signup`,
             data: qs.stringify(user),
             headers: {
                 'Content-Type': "application/x-www-form-urlencoded"

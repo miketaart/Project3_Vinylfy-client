@@ -14,7 +14,7 @@ class Navbar extends Component {
     }
 
     handleLogout() {
-        axios.delete('http://localhost:8000/auth/logout')
+        axios.delete(`${process.env.REACT_APP_API_BASE}/auth/logout`)
             .then((response) => {
                 window.localStorage.clear('user');
                 // removeItem() vs clear()

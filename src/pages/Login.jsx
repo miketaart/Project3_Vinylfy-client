@@ -41,7 +41,7 @@ export default class Login extends Component {
 
         axios({
             method: "POST",
-            url: 'http://localhost:8000/auth/login',
+            url: `${process.env.REACT_APP_API_BASE}/auth/login`,
             data: qs.stringify(user),
             headers: {
                 'Content-Type': "application/x-www-form-urlencoded"

@@ -5,7 +5,7 @@ import qs from "qs";
 // the query string format, which is equal to the x-www-form-urlencoded format
 
 const axios = Axios.create({
-    baseURL: 'https:localhost:8000/auth',
+    baseURL: `${process.env.REACT_APP_API_BASE}/auth`,
     withCredentials: true,
     headers: { 'content-type': 'application/x-www-form-urlencoded' }
 });
