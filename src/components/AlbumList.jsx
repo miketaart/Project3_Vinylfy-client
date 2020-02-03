@@ -17,7 +17,7 @@ export default class Collection extends Component {
         this.state = {
             collection: [],
             username: "",
-            //basic_information:[],
+            basicInfo:{},
             header: ""
         };
     }
@@ -32,10 +32,11 @@ export default class Collection extends Component {
 
                 this.setState({
                     collection: response.data.releases,
-                    //basic_information: response.data.releases.basic_information,
+                    //basicInfo: response.data.releases[0].basic_information,
                     header: "My vinyl collection",
                     error: null
                 });
+                console.log("TEEEESSST>>>>>>>>>>>",this.state.collection)
 
             })
             .catch(error => {
@@ -47,17 +48,25 @@ export default class Collection extends Component {
 
     handleInputChange(e) {
         this.setState({
-            username: e.target.value.replace(/[^\w\s]/gi, "")
+            username: e.target.value.replace(/[^A-Z0-9]/ig, "") //(/[^\w\s/g]/gi, "")
         });
     }
 
-    // sortByName = () => {
-    //     this.setState({
-    //         basic_information: this.state.basic_information.sort(function(a, b) {
-    //         return a.title.localeCompare(b.title);
-    //         })
-    //     });
-    // };
+    sortByTitle = () => {
+        this.setState({
+            collection: this.state.collection.sort(function(a, b) {
+            return a.basic_information.title.localeCompare(b.basic_information.title);
+            })
+        });
+    };
+
+    sortByArtist = () => {
+        this.setState({
+            collection: this.state.collection.sort(function(a, b) {
+            return a.basic_information.artists[0].name.localeCompare(b.basic_information.artists[0].name);
+            })
+        });
+    };
 
 
     render() {
@@ -89,7 +98,10 @@ export default class Collection extends Component {
 
                 <div className="release-output-wrapper">
                     <div className="release">
-                    {/* <button onClick={this.sortByName}>a-z</button> */}
+
+                    <button onClick={this.sortByTitle}>Sort by album name</button>
+                    <button onClick={this.sortByArtist}>Sort by artist name</button>
+
                         {this.state.collection.map((release, index) => {
 
                             return (

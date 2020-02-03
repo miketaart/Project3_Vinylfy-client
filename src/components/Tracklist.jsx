@@ -92,7 +92,7 @@ export default class Tracklist extends Component {
                             <ReactPlayer 
                             url={track.preview_url} 
                             style={playerStyle} 
-                            controls="true" 
+                            controls={true}
                             width="144px" 
                             height="16px"/>
                             </p>
