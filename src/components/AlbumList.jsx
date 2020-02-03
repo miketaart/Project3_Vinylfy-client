@@ -12,13 +12,14 @@ export default class Collection extends Component {
 
         this.getCollection = this.getCollection.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        //this.sortByName = this.sortByName.bind(this);
+        this.updateSearch = this.updateSearch.bind(this);
 
         this.state = {
             collection: [],
             username: "",
             basicInfo:{},
-            header: ""
+            header: "",
+            search: ""
         };
     }
 
@@ -68,6 +69,11 @@ export default class Collection extends Component {
         });
     };
 
+    updateSearch(e){
+        this.setState({
+          search: e.target.value
+        })
+      }
 
     render() {
         let user = getUser();
@@ -101,8 +107,15 @@ export default class Collection extends Component {
 
                     <button onClick={this.sortByTitle}>Sort by album name</button>
                     <button onClick={this.sortByArtist}>Sort by artist name</button>
-
-                        {this.state.collection.map((release, index) => {
+                    <input className="input" type="text" placeholder="Filter by artist or release" value={this.state.search} onChange={this.updateSearch} />
+                        {
+                            this.state.collection
+                            .filter((release)=> 
+                                release.basic_information.artists[0].name.toLowerCase()
+                                .includes(this.state.search.toLowerCase()) || 
+                                release.basic_information.title.toLowerCase()
+                                .includes(this.state.search.toLowerCase()))
+                            .map((release, index) => {
 
                             return (
                                 <div className="release-details" key={index}>
