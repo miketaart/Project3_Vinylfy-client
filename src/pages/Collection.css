@@ -90,7 +90,7 @@
 }
 
 .release-details {
-    justify-content: top;
+    justify-content: space-between;
     flex-basis: 150px;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -115,17 +115,6 @@ button:focus {
     height: 170px;
     object-fit: cover;
 }
-
-/* .covers:after {
-    content:"";
-    display: block;
-} */
-
-/* .tracklist {
-    width: 33%;
-} */
-
-
 /* TEST///////////////////////////TEST///////////////////////////TEST///////////////////////////TEST */
 
 @media only screen and (max-width: 950px) {
@@ -152,3 +141,38 @@ button:focus {
 }
 
 @media only screen and (max-width: 650px) {}
+
+/* SORT BUTTONs AND SEARCH FIELD */
+
+.sort {
+    display: flex;
+    width: 78%;
+    justify-content: flex-end;
+}
+
+.sort-button {
+    width: auto;
+    border-radius: 0px;
+    font-size: 11px;
+    background-color: #222222;
+    border: 2px solid #222222;    
+    margin-bottom: 30px;
+    font-weight: normal;
+    transition: 0s;
+}
+
+.sort-button-active {
+    background-color: #fff;
+    color: #222222;
+}
+
+
+.input {
+    margin-bottom: 30px;
+    width: 78%;
+    
+}
+
+.sort, .input {
+    margin-right: 70px;
+}

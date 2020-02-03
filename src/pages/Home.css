@@ -169,7 +169,7 @@ button {
   transition: .2s ease-in;
 }
 
-button:hover {
+.form-button:hover, .search-button:hover {
   background-color: #fff;
   color: #FEDF0D;
 }

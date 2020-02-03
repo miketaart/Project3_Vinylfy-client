@@ -93,7 +93,7 @@ export default class Collection extends Component {
                             placeholder="Search by Discogs username"
                             onChange={this.handleInputChange}
                         />
-                        <button onClick={this.getCollection}>Search</button>
+                        <button className="search-button" onClick={this.getCollection}>Search</button>
                     </div>
 
                 </div>
@@ -104,12 +104,13 @@ export default class Collection extends Component {
 
                 <div className="release-output-wrapper">
                     <div className="release">
+                    <input className="input" type="text" placeholder="Filter by artist or release" value={this.state.search} onChange={this.updateSearch}/>
+                        <div className="sort">
+                            <button onClick={this.sortByTitle} className="sort-button">Sort by album</button>
+                            <button onClick={this.sortByArtist} className="sort-button sort-button-active">Sort by artist</button>
+                        </div>
 
-                    <button onClick={this.sortByTitle}>Sort by album name</button>
-                    <button onClick={this.sortByArtist}>Sort by artist name</button>
-                    <input className="input" type="text" placeholder="Filter by artist or release" value={this.state.search} onChange={this.updateSearch} />
-                        {
-                            this.state.collection
+                            {this.state.collection
                             .filter((release)=> 
                                 release.basic_information.artists[0].name.toLowerCase()
                                 .includes(this.state.search.toLowerCase()) || 
@@ -124,10 +125,14 @@ export default class Collection extends Component {
                                     </Link>
 
                                     <div className="">
+                                    <Link to={`/collection/${release.basic_information.title}`}>
                                         <h4>
                                             {release.basic_information.title}
                                         </h4>
+                                        </Link>
+                                        <Link to={`/collection/${release.basic_information.title}`}>
                                         <p>{release.basic_information.artists[0].name}</p>
+                                        </Link>
                                     </div>
                                 </div>
                             );
