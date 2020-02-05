@@ -25,11 +25,7 @@ class Navbar extends Component {
                 console.log("logout error", error)
             })
     }
-
     
-
-    
-
     render() {
         let user = getUser();
         return (
