@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './Home.css';
-import axios from "axios";
-import qs from "qs";
+import { login } from '../utils/auth';
 
 export default class Login extends Component {
 
@@ -33,29 +32,17 @@ export default class Login extends Component {
 
     handleLoginClick(e) {
         e.preventDefault();
-
         let user = {
             username: this.state.username,
             password: this.state.password
         }
-
-        axios({
-            method: "POST",
-            url: `${process.env.REACT_APP_API_BASE}/auth/login`,
-            data: qs.stringify(user),
-            headers: {
-                'Content-Type': "application/x-www-form-urlencoded"
-            }
+        login(user)
+        .then((response) => {
+            this.props.history.push("/collection");
         })
-        .then(res => {
-            window.localStorage.setItem("user", JSON.stringify(res.data))
-            this.props.history.push("/collection")
-        })
-        .catch((err) => {})
+        .catch((err) => { console.log('err', err) })
 
     }
-
-
 
     render() {
         return (

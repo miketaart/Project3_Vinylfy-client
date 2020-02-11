@@ -3,7 +3,7 @@ import './../pages/Home.css';
 import logo from './../images/logo.png';
 import { NavLink, withRouter } from "react-router-dom"
 import {Fragment} from "react";
-import axios from "axios";
+import {logout} from "../utils/auth";
 import {getUser} from "../utils/auth";
 
 class Navbar extends Component {
@@ -13,17 +13,16 @@ class Navbar extends Component {
         this.handleLogout = this.handleLogout.bind(this);
     }
 
+
     handleLogout() {
-        axios.delete(`${process.env.REACT_APP_API_BASE}/auth/logout`)
-            .then((response) => {
-                window.localStorage.clear('user');
-                // removeItem() vs clear()
-                // https://stackoverflow.com/questions/15486484/localstorage-clear-or-removeitem
-                this.props.history.push("/auth/login");
-            })
-            .catch((error) => {
-                console.log("logout error", error)
-            })
+        logout()
+        .then((response) => {
+            this.props.history.push("/auth/login");
+        })
+        .catch((error) => {
+            console.log("logout error", error)
+        })
+        
     }
     
     render() {
@@ -37,7 +36,7 @@ class Navbar extends Component {
                         <NavLink to="/collection"><img src={logo} alt="pic" /></NavLink>
                     </div>
                     <ul className="nav-links">
-                        <li>Hi, {user.username}</li>
+                        <li>Hi, {user.username.charAt(0).toUpperCase() + user.username.slice(1)}</li>
                         <li><a href="#" onClick={this.handleLogout}>Log out</a></li>
                     </ul>
                 </nav>

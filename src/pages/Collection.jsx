@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar.jsx"
 import AlbumList from "../components/AlbumList.jsx"
 import Tracklist from "../components/Tracklist.jsx"
 import {getUser} from "../utils/auth.jsx"
-import Home from "../pages/Home"
 
 
 

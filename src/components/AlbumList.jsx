@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import '../pages/Collection.css';
 import {getUser} from "../utils/auth";
+import '../pages/Collection.css';
 
 
 //GET MY COLLECTION FROM DISCOGS
@@ -30,15 +30,11 @@ export default class Collection extends Component {
                 `${process.env.REACT_APP_API_BASE}/discogs/collection/user/${this.state.username}`
             )
             .then(response => {
-
                 this.setState({
                     collection: response.data.releases,
-                    //basicInfo: response.data.releases[0].basic_information,
                     header: "My vinyl collection",
                     error: null
                 });
-                console.log("TEEEESSST>>>>>>>>>>>",this.state.collection)
-
             })
             .catch(error => {
                 this.setState({
@@ -49,7 +45,7 @@ export default class Collection extends Component {
 
     handleInputChange(e) {
         this.setState({
-            username: e.target.value.replace(/[^A-Z0-9]/ig, "") //(/[^\w\s/g]/gi, "")
+            username: e.target.value.replace(/[^A-Z0-9]/ig, "")
         });
     }
 
@@ -81,7 +77,7 @@ export default class Collection extends Component {
 
             <div className="collection-wrapper">
                 <div className="intro">
-                    <h1>Hi, {user.username}!</h1>
+                    <h1>Hi, {user.username.charAt(0).toUpperCase() + user.username.slice(1)}!</h1>
                     <h1>Import a vinyl collection and start listening to your favourites tunes, or your friends’. </h1>
 
                     <div className="discogs-input">

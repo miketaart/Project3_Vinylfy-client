@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import axios from "axios";
-import qs from "qs";
 import { withRouter } from "react-router-dom" 
-//https://stackoverflow.com/questions/46757676/in-react-is-it-always-better-to-render-a-redirect-than-use-this-props-history-pu?rq=1
-//if you want push.history to work when you render a component instead of directly calling it
-//then wrap the component in withRouter()
+import { signup } from "../utils/auth";
+
 
 class Signup extends Component {
 
@@ -51,21 +48,11 @@ class Signup extends Component {
             password: this.state.password
         }
 
-        axios({
-            method: "POST",
-            url: `${process.env.REACT_APP_API_BASE}/auth/signup`,
-            data: qs.stringify(user),
-            headers: {
-                'Content-Type': "application/x-www-form-urlencoded"
-            }
+        signup(user)
+        .then((response) => {
+            this.props.history.push("/collection");
         })
-        .then(response => {
-            window.localStorage.setItem("user", JSON.stringify(response.data))
-            this.props.history.push("/collection")
-        })
-        .catch((error) => {
-                
-        })
+        .catch((err) => { console.log('err', err) })
     }
 
     render() {

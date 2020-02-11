@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import '../pages/Collection.css';
-import { Link } from "react-router-dom";
 import ReactPlayer from 'react-player';
+import '../pages/Collection.css';
 
 export default class Tracklist extends Component {
     constructor(props) {
         super(props)
         this.getAlbumInfoWithTrackList = this.getAlbumInfoWithTrackList.bind(this);
-        //this.onclickPlay = this.onclickPlay.bind(this)
 
         this.state = {
             music: {
@@ -23,28 +21,23 @@ export default class Tracklist extends Component {
     }
 
     getAlbumInfoWithTrackList() {
-        // 
         var music = {};
-        axios.get(`${process.env.REACT_APP_API_BASE}/spotify/album/${this.props.match.params.album_name}`) //changed type: "track" into "album"
-            .then(({ data }) => {
-                // 
-                music = {
-                    ...data.albums,
-                    albumCover: data.albums.items[0].images[1].url,
-                    albumTitle: data.albums.items[0].name,
-                    artist: data.albums.items[0].artists[0].name
-                };
+        axios.get(`${process.env.REACT_APP_API_BASE}/spotify/album/${this.props.match.params.album_name}`)
+        .then(({ data }) => {
+            music = {
+                ...data.albums,
+                albumCover: data.albums.items[0].images[1].url,
+                albumTitle: data.albums.items[0].name,
+                artist: data.albums.items[0].artists[0].name
+            };
 
-                return axios.get(`${process.env.REACT_APP_API_BASE}/spotify/album/tracklist/${music.items[0].id}`)
+            return axios.get(`${process.env.REACT_APP_API_BASE}/spotify/album/tracklist/${music.items[0].id}`)
             })
-            .then(({ data }) => {
-                // 
-                music = { ...music, trackList: data.items }
-                this.setState({ music })
-                
-                
-            })
-            .catch((err) => { console.log("ERROR DURING AXIOS", err) })
+        .then(({ data }) => {
+            music = { ...music, trackList: data.items }
+            this.setState({ music })
+        })
+        .catch((err) => { console.log("ERROR DURING AXIOS", err) })
     }
 
 
@@ -56,20 +49,10 @@ export default class Tracklist extends Component {
         if (this.props.match.params.album_name !== prevProps.match.params.album_name) {
             this.getAlbumInfoWithTrackList();
         }
-            
-
     }
 
-    // onclickPlay() {
-    //     this.setState({
-    //         play: "true"
-    //     })
-    // }
 
     render() {
-        const playerStyle = {
-            backgroundColor: "#FEDF0D"
-        }
         return (
             <div className="tracklist-wrapper">
                 <div className="tracklist" >
@@ -90,8 +73,7 @@ export default class Tracklist extends Component {
                                 onClick={this.onclickPlay}>
                             {track.track_number}. {track.name}
                             <ReactPlayer 
-                            url={track.preview_url} 
-                            style={playerStyle} 
+                            url={track.preview_url}  
                             controls={true}
                             width="144px" 
                             height="16px"/>
