@@ -65,11 +65,14 @@ a {
 
 .main {
   width: 60%;
+  display: flex;
+  align-items: center;
 }
 
-.header {
-  width: 100%;
-  height: 10%;
+@media only screen and (max-width: 950px) {
+  .main {
+    height: 100vh;
+  }
 }
 
 nav {
@@ -79,7 +82,6 @@ nav {
   justify-content: space-between;
   position: fixed;
   top: 0;
-  background: #fff;
   z-index: 10;
 }
 
@@ -233,10 +235,20 @@ button:focus {
   .nav-links li a {
     color: #fff;
   }
+
+  .header {
+    width: 100%;
+    height: 13%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .form-content {
     width: 85%;
+    padding: 30px;
+  }
+
+  .nav-links {
+    width: 140px;
   }
 }
