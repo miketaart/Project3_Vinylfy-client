@@ -100,8 +100,6 @@ button:focus {
     outline: none;
 }
 
-
-
 .tracklist-img img {
     height: 144px;
     width: 144px;
@@ -116,31 +114,6 @@ button:focus {
     object-fit: cover;
 }
 /* TEST///////////////////////////TEST///////////////////////////TEST///////////////////////////TEST */
-
-@media only screen and (max-width: 950px) {
-
-    .intro,
-    .discogs-input input[type=text] {
-        width: 80%;
-    }
-
-    .collection-wrapper {
-        width: 80%;
-    }
-}
-
-@media only screen and (max-width: 1300px) {
-    .tracklist-header {
-        flex-direction: column;
-    }
-
-    .tracklist-title {
-        padding-left: 0;
-        padding-bottom: 20px;
-    }
-}
-
-@media only screen and (max-width: 650px) {}
 
 /* SORT BUTTONs AND SEARCH FIELD */
 
@@ -175,4 +148,71 @@ button:focus {
 
 .sort, .input {
     margin-right: 70px;
+}
+
+@media only screen and (max-width: 950px) {
+
+    .intro,
+    .discogs-input input[type=text], .collection-wrapper {
+        width: 100%;
+    }
+
+    .release {
+        margin: 0;
+    }
+
+    .release .input {
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    .sort {
+        width: 100%;
+        margin: 0;
+    }
+
+    .release-details {
+        flex-basis: 100%;
+        margin-right: 0;
+    }
+
+    .cover {
+        width: 100%;
+    }
+
+    .discogs-input button {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .tracklist-header {
+        flex-direction: column;
+    }
+
+    .tracklist-title {
+        padding-left: 0;
+        padding-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .tracklist-img img {
+        height: 150px;
+        width: 150px;
+    }
+
+    .tracklist {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: 80%;
+        padding: 30px;
+    }
+    
+    .tracklist-header {
+        margin-top: 0;
+    }
 }
