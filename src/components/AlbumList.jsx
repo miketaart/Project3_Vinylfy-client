@@ -35,6 +35,7 @@ export default class Collection extends Component {
                     header: "My vinyl collection",
                     error: null
                 });
+                
             })
             .catch(error => {
                 this.setState({
