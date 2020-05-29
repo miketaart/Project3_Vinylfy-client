@@ -3,7 +3,7 @@ For my final project I created an app which lets you import and listen to your h
 Click [here](https://github.com/miketaart/Vinylfy-server) to check out the server code
 Click [here](https://vinylfy.netlify.app/) to check out the project deployed with Netlify (front end) and Heroku (back end) please use the following credentials:
 
-login
+Login
 username: user
 password: user123
 
