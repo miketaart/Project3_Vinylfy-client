@@ -4,11 +4,10 @@ Click [here](https://github.com/miketaart/Vinylfy-server) to check out the serve
 Click [here](https://vinylfy.netlify.app/) to check out the project deployed with Netlify (front end) and Heroku (back end) please use the following credentials:
 
 Login
-username: user
+username: user and
 password: user123
 
-Discogs username
-username: michaeltaart
+Discogs username: michaeltaart
 ## Available Scripts
 
 In the project directory, you can run:
